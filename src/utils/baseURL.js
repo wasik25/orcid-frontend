@@ -1,3 +1,3 @@
 export const getBaseUrl = () => { 
-    return "https://orcid-backend.vercel.app/";
+    return "https://orcid-backend.vercel.app";
 };
