@@ -31,10 +31,13 @@ const PaymentForm = () => {
     setLoading(true);
     
     try {
-      const response = await axios.post('http://localhost:8000/api/initiate-salary-payment/', {
-        employee_id: employeeId,
-        amount: amount
-      });
+      const response = await axios.post(
+        `${getBaseUrl()}/api/initiate-salary-payment/`,
+        {
+          employee_id: employeeId,
+          amount: amount,
+        }
+      );
       
       window.location.href = response.data.payment_url;
       console.log(response.data.payment_url)
