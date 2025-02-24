@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { getBaseUrl } from "../utils/baseURL";
+
 const ProfileCard = () => {
   // Sample data, you can replace with dynamic values later
   const [profile, setProfile] = useState(null);
@@ -14,11 +16,14 @@ const ProfileCard = () => {
               
               
               // Retrieve the JWT token from local storage
-              const response = await axios.get('http://localhost:8000/api/user/profile/', {
+              const response = await axios.get(
+                `${getBaseUrl()}/api/user/profile/`,
+                {
                   headers: {
-                      'Authorization': `Bearer ${JSON.parse(token)}`,
+                    Authorization: `Bearer ${JSON.parse(token)}`,
                   },
-              });
+                }
+              );
               setProfile(response.data);
           } catch (err) {
               setError('Failed to fetch profile');
